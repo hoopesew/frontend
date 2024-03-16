@@ -11,25 +11,31 @@ function Welcome() {
   );
 }
 
-function GoButton() {
-  const [goLevel, updateLevel] = useState(1);
-  const incrementGo = () => updateLevel(goLevel * 2);
-
+function GoButton(props: any) {
   return (
     <div>
-      <button onClick={incrementGo}>GoButton</button>
-      <br></br>
-      <br></br>
-      <label>Amount of Go: {goLevel}</label>
+      <button onClick={props.onClickFunction}>GoButton</button>
+    </div>
+  );
+}
+
+function GoGoLevel(props: any) {
+  return (
+    <div>
+      <label>Amount of Go: {props.numberToShow}</label>
     </div>
   );
 }
 
 function App() {
+  const [goLevel, updateLevel] = useState(1);
+  const incrementGo = () => updateLevel(goLevel * 2);
+
   return (
     <div className="App">
       <Welcome />
-      <GoButton />
+      <GoButton onClickFunction={incrementGo} />
+      <GoGoLevel numberToShow={goLevel} />
     </div>
   );
 }
