@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+
+function Welcome() {
+  return (
+    <div>
+      <h1>
+        Welcome to the site where you can calculate how badly you need to go!
+      </h1>
+    </div>
+  );
+}
+
+function GoButton() {
+  const [goLevel, updateLevel] = useState(1);
+  const incrementGo = () => updateLevel(goLevel * 2);
+
+  return (
+    <div>
+      <button onClick={incrementGo}>GoButton</button>
+      <br></br>
+      <br></br>
+      <label>Amount of Go: {goLevel}</label>
+    </div>
+  );
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Welcome />
+      <GoButton />
     </div>
   );
 }
